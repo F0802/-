@@ -1,10 +1,17 @@
 body {
-    width:100vw;
+    width: 100vw;
     height:100vh;
     display:flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
+    margin: 0px;
+
+    background-image:url('1000.jpg'); 
+    
+    background-color:#cccccc;
+    background-attachment: fixed;    
+    background-size: cover;
+
     
 }
 
@@ -15,7 +22,7 @@ body {
     box-shadow: 2px 2px 2px #a16e77;
     background: #fce5e9;
     position: absolute;
-    top:4em
+    top:9em
 }
 
 .cell {background-color: pink;
@@ -43,8 +50,48 @@ body {
 
 .cell.landmine.exploded{
     background-color: red;
+
 }
 
 .cell.landmine.success{
     background-color:green;
+}
+
+.button{
+    color: #877477;
+    top: 300px;
+    right: 150px;
+    background-color: pink;
+    position:fixed;
+    font-size: 20px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-weight: 500;
+    border-color: #eee2e4;
+}
+.button:hover{background-color: red; color: white;
+    box-shadow: 0 12px 16px 0 rgba(90, 56, 56, 0.24), 0 17px 50px 0 rgba(117, 52, 52, 0.19);
+}
+.button:active {
+    background-color: #e3ee50;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+
+.encourimage.success{
+    background-image:url('t01e172a2abc16c13a4.gif'); 
+    position: absolute;
+    right: 99px;
+    top: 63px;
+    
+    
+
+}
+.encourimage.fail{
+    background-image:url('t01bdc1ae9fac4a937f.gif'); 
+    position: absolute;
+    right: 99px; top: 63px;
 }

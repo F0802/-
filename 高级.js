@@ -38,6 +38,24 @@ function renderBoard(numRows, numCols, grid) {
         }
         boardEl.append(trEl);
      }
+     //初始随机清空一片区域
+     let empty = new Array();
+     for (let i=0; i < numRows; i++) {
+         
+         for (let j=0; j < numCols; j++) {
+             if (grid[i][j].count === 0) {
+                 empty.push([i,j])
+             }
+         }
+     }
+     let a = empty[Math.trunc(Math.random() *empty.length)];
+     
+     let krow = a[0];
+     let kcol = a[1];
+     console.log(a,krow,kcol);
+     searchClearArea(grid,krow, kcol,numRows,numCols);
+     checkAllClear(grid);
+     grid[krow][kcol].cellEl.classList.add("clear")
 }
 
 const directions =[            //雷区八个方向
@@ -143,13 +161,20 @@ function explode(grid,row,col,numRows,numCols){
         for (let cellCol=0;cellCol<numCols;cellCol++) {
             let cell = grid[cellRow][cellCol];
             cell.clear = true;
-            cell.cellEl.classList.add("clear");
+            //cell.cellEl.classList.add("clear");
 
             if (cell.count ===-1){
                 cell.cellEl.classList.add("landmine");
+                cell.cellEl.classList.add("clear");
+                cell.cellEl.innerHTML = '<img src="t01bdc1ae9fac4a937f.gif" style="margin:-3px 5px 1px 0px" width="27px" height="27px">;'
             }
         } 
     }
+    alert("一不小心踩到了雷，游戏结束，你输啦!");
+    let iscountinue = confirm("是否继续?");
+    alert(iscountinue);
+    let Emg2 = document.getElementById('1');
+    Emg2.classList.add("fail");
 }
 
 function checkAllClear(grid) {
@@ -171,11 +196,18 @@ function checkAllClear(grid) {
             if (cell.count ===-1){
                 cell.cellEl.classList.add("landmine");
             }
-
             cell.cellEl.classList.add("success");
-        }
+            cell.cellEl.innerHTML = '<img src="t01e172a2abc16c13a4.gif" style="margin:-2px 5px 1px -1px" width="27px" height="27px">;'
+        } 
     }
+    alert("恭喜你已成功扫除所有雷!");
+    let iscountinue = confirm("是否继续?");
+    alert(iscountinue);
+    let Emgl = document.getElementById('1');
+    Emgl.classList.add("success");
+
     return true;
+   
 }
 
 let grid = initialize(30, 16, 99);
